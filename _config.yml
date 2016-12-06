@@ -32,3 +32,21 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+# page
+paginate: 10
+paginate_path: "/blog/page:num/"
+
+comments :
+  provider : duoshuo
+  duoshuo :
+    short_name : liberize
+  disqus :
+      short_name : liberize
+sass:
+    sass_dir: _sass
+
+# Categories
+category_archive:
+  slugify: true
+  path: /blog/category

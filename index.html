@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<div class="middle">
+<div class="home">
+  <ul class="post-list">
+    <!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
+<li>
+  <header>
+    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+  </header>
+
+  <!--<p class="author">
+    <span class="date">{{ post.date | date: "%Y-%m-%d %H:%m" }}</span>
+  </p>-->
+  <div class="content">
+    {{ post.content | strip_html | truncate:200 }}
+  </div>
+  <p class="post-meta">
+       <time><i class="fa fa-clock-o" aria-hidden="true"></i>{{ post.date | date: "%Y-%m-%d %H:%m" }}</time> Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}
+   </p>
+<hr>
+</li>
+{% endfor %}
+  </ul>
+
+<div class="pagination">
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a class="jumbotron-icon" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-arrow-left fa-2" aria-hidden="true"></i></a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a class="jumbotron-icon" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-arrow-right fa-2" aria-hidden="true"></i></a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
+</div>
+</div>
+</div>
